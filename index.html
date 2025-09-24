@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mohamed Saad Abdallah - Portfolio</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS for simple animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+            /* خصائص بسيطة للتجاوب مع الخلفية */
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;
+            background: linear-gradient(135deg, #ff0080, #7928ca, #2afadf, #00ff94);
+            background-size: 400% 400%;
+            animation: gradientMove 50s ease infinite;
+            color: #ffffff;
+        }
+
+        /* حركة الخلفية */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* لوحة شفافة فوق الخلفية لسهولة القراءة */
+        .glass {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(6px);
+        }
+
+        /* حدود الصورة الدائرية أكبر */
+        .profile-circle {
+            width: 350px;
+            height: 350px;
+            border-radius: 9999px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(2,6,23,0.6);
+            border: 5px solid rgba(255,255,255,0.1);
+            margin: 20px auto;
+        }
+
+        /* زر ارتكاز */
+        .cta {
+            background: linear-gradient(135deg, #1e3a8a, #9333ea, #f50b8c);
+        }
+
+        /* تحسين النص */
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-shadow: 0 3px 15px rgba(0,0,0,0.55);
+        }
+        h2, h3 {
+            text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+        }
+
+        /* أنيميشن زر المشاريع */
+        .projects-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+            background: linear-gradient(135deg, #facc15, #f97316);
+        }
+    </style>
+</head>
+<body>
+<!-- الحاوية الرئيسية -->
+<div class="min-h-screen flex flex-col">
+    <!-- ناف بار -->
+    <header class="fixed top-4 left-4 right-4 z-40">
+        <nav class="glass rounded-xl px-4 py-3 max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-lg font-semibold">Mohamed Saad</span>
+                <span class="text-xs opacity-70">Back-End Developer</span>
+            </div>
+            <ul class="hidden md:flex items-center gap-6 text-sm">
+                <li><a href="#about" class="hover:text-yellow-300 transition">عنّي</a></li>
+                <li><a href="#services" class="hover:text-yellow-300 transition">خدمات</a></li>
+                <li><a href="#skills" class="hover:text-yellow-300 transition">مهارات</a></li>
+                <li><a href="#projects" class="hover:text-yellow-300 transition">مشاريعي</a></li>
+                <li><a href="#contact" class="hover:text-yellow-300 transition">تواصل</a></li>
+            </ul>
+            <div class="md:hidden">
+                <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
+                        class="p-2 rounded-md glass">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- قائمة موبايل -->
+        <div id="mobileMenu" class="hidden max-w-6xl mx-auto mt-2 px-4">
+            <div class="glass rounded-xl p-3 flex flex-col gap-2">
+                <a href="#about" class="py-2">عنّي</a>
+                <a href="#services" class="py-2">خدمات</a>
+                <a href="#skills" class="py-2">مهارات</a>
+                <a href="#projects" class="py-2">مشاريعي</a>
+                <a href="#contact" class="py-2">تواصل</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- hero: صورة على جنب + نص واضح -->
+    <main class="flex-1 flex items-center">
+        <div class="max-w-6xl mx-auto w-full px-6 py-24">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <!-- يمين (نص) -->
+                <div class="text-right" data-aos="fade-left">
+                    <p class="hello mb-4">👋 مرحباً — أنا</p>
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight name-glow">
+                        <span dir="ltr">Mohamed Saad Abdallah</span>
+                    </h1>
+                    <p class="mt-4 text-lg opacity-90 max-w-xl">
+                        مطور Back-End بخبرة في Java وSpring Boot. أقدّم حلول API احترافية، تصميم قواعد بيانات، وعمليات CRUD متقدّمة. أعمل على بناء أنظمة موثوقة وسهلة الصيانة.
+                    </p>
+                    <!-- أزرار دعوة لاتخاذ إجراء -->
+                    <div class="mt-8 flex gap-4">
+                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-lg cta shadow-lg">
+                            <i class="fa fa-paper-plane"></i>
+                            تواصل معي
+                        </a>
+                        <a href="#services" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-lg glass hover:opacity-95">
+                            <i class="fa fa-briefcase"></i>
+                            خدماتي
+                        </a>
+                        <a href="#projects" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-lg projects-btn glass hover:opacity-95 transition duration-300">
+                            <i class="fa fa-project-diagram"></i>
+                            مشاريعي
+                        </a>
+                    </div>
+                    <!-- بطاقة مختصرة للخدمات الأساسية -->
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass rounded-xl p-4 flex items-start gap-3">
+                            <div class="text-2xl p-3 rounded-lg bg-white/10 shrink-0">
+                                <i class="fa fa-dollar-sign"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">CV Design (محترف)</h3>
+                                <p class="text-sm opacity-80">تصميم سيرة ذاتية بصيغة احترافية جاهزة للشركات — PDF / LinkedIn friendly.</p>
+                            </div>
+                        </div>
+                        <div class="glass rounded-xl p-4 flex items-start gap-3">
+                            <div class="text-2xl p-3 rounded-lg bg-white/10 shrink-0">
+                                <i class="fa fa-code"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">API & Backend</h3>
+                                <p class="text-sm opacity-80">CRUD • Aggregation • API Requests • Pagination • Auth & Validation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- نظرة مختصرة للأدوات -->
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Java</span>
+                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Spring Boot</span>
+                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">MongoDB / SQL</span>
+                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">REST APIs</span>
+                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Postman</span>
+                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Git</span>
+                    </div>
+                </div>
+                <!-- يسار: صورة دائرية كبيرة -->
+                <div class="flex justify-center md:justify-start" data-aos="fade-right">
+                    <div class="profile-circle">
+                        <img src="images/myphoto.jpg" alt="Mohamed Saad" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- قسم الخدمات بالتفصيل -->
+    <section id="services" class="max-w-6xl mx-auto px-6 py-12">
+        <div class="glass rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-8 text-center">Back-End Services I Offer</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- CRUD APIs -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-database text-3xl text-yellow-300"></i>
+                        <h3 class="font-semibold text-lg">CRUD APIs بسيطة</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        إنشاء واجهات برمجة تطبيقات لإدارة بيانات المستخدمين أو المنتجات أو المهام، مع عمليات Create/Read/Update/Delete.
+                    </p>
+                    <p class="text-xs opacity-70">مثال: To-Do List API أو Blog Posts API.</p>
+                </div>
+                <!-- Authentication -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-lock text-3xl text-green-400"></i>
+                        <h3 class="font-semibold text-lg">Authentication أساسية</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        تسجيل دخول وتسجيل مستخدمين مع حفظ كلمة المرور بشكل آمن واستخدام JWT بسيط للمصادقة.
+                    </p>
+                    <p class="text-xs opacity-70">مثال: Login/Register API.</p>
+                </div>
+                <!-- Pagination & Sorting -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-sort text-3xl text-purple-400"></i>
+                        <h3 class="font-semibold text-lg">Pagination & Sorting</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        عرض البيانات مقسمة صفحات وترتيبها حسب الاسم أو التاريخ لتسهيل عرض المعلومات.
+                    </p>
+                    <p class="text-xs opacity-70">مثال: عرض المستخدمين 10 في كل صفحة.</p>
+                </div>
+                <!-- Database Design -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-layer-group text-3xl text-blue-400"></i>
+                        <h3 class="font-semibold text-lg">تصميم قواعد بيانات بسيطة</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        تصميم جداول SQL أو Collections في MongoDB بشكل منظم للعلاقات الأساسية بين البيانات.
+                    </p>
+                    <p class="text-xs opacity-70">مثال: Users, Products, Orders.</p>
+                </div>
+                <!-- API Documentation -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-file-alt text-3xl text-red-400"></i>
+                        <h3 class="font-semibold text-lg">توثيق API</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        شرح طرق استخدام API الخاصة بك لكل Endpoint مع أمثلة بسيطة على GET, POST, PUT, DELETE.
+                    </p>
+                    <p class="text-xs opacity-70">مثال: ملف README أو صفحة API Docs بسيطة.</p>
+                </div>
+                <!-- Validation بسيطة -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-check-circle text-3xl text-teal-400"></i>
+                        <h3 class="font-semibold text-lg">Validation بسيطة</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        التحقق من البيانات المدخلة: البريد الإلكتروني، كلمة المرور، أرقام الهاتف، لضمان صحة البيانات قبل المعالجة.
+                    </p>
+                    <p class="text-xs opacity-70">مثال: التأكد من أن البريد الإلكتروني صحيح وطول كلمة المرور مناسب.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المشاريع -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-12">
+        <div class="glass rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-8 text-center">مشاريعي</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- مشروع 1: Marketly -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-store text-3xl text-yellow-300"></i>
+                        <h3 class="font-semibold text-lg">Marketly</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        تطبيق سوق إلكتروني تم تطويره باستخدام Java وSpring Boot، يدعم إدارة المنتجات، العملاء، ومعالجة الطلبات.
+                    </p>
+                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, MongoDB, REST APIs</p>
+                    <a href="https://github.com/mohamedcody/marketly" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
+                </div>
+                <!-- مشروع 2: Employee Management System -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-users text-3xl text-green-400"></i>
+                        <h3 class="font-semibold text-lg">نظام إدارة الموظفين</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        نظام لإدارة الموظفين باستخدام Java وSpring Boot، يدعم عمليات CRUD لسجلات الموظفين مع تكامل قاعدة بيانات.
+                    </p>
+                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, SQL</p>
+                    <a href="https://github.com/mohamedcody/employee-management" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
+                </div>
+                <!-- مشروع 3: E-Commerce Application -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-shopping-cart text-3xl text-purple-400"></i>
+                        <h3 class="font-semibold text-lg">تطبيق التجارة الإلكترونية</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        تطبيق تجارة إلكترونية كامل باستخدام Java، Spring Boot، وMongoDB، يدعم كتالوج المنتجات، سلة التسوق، إدارة الطلبات، والمصادقة.
+                    </p>
+                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, MongoDB, JWT</p>
+                    <a href="https://github.com/mohamedcody/ecommerce-app" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
+                </div>
+                <!-- مشروع 4: Hotely -->
+                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-hotel text-3xl text-blue-400"></i>
+                        <h3 class="font-semibold text-lg">Hotely</h3>
+                    </div>
+                    <p class="text-sm opacity-90 mb-2">
+                        نظام إدارة فندق باستخدام Java وSpring Boot، يدعم حجز الغرف، إدارة العملاء، والفوترة.
+                    </p>
+                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, SQL</p>
+                    <a href="https://github.com/mohamedcody/hotely" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المهارات -->
+    <section id="skills" class="skills glass py-6 px-2 text-center">
+        <h2 class="text-lg font-bold mb-4 text-teal-300" data-aos="fade-up">⚡ Skills</h2>
+        <!-- إضافة div لعرض اسم المهارة -->
+        <div id="skill-popup" style="position:fixed;top:20px;right:20px;padding:10px 15px;background:#1e3a8a;color:white;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.5);display:none;z-index:1000;font-weight:bold;">
+        </div>
+
+        <script>
+            const skillCards = document.querySelectorAll('.skill-card');
+            const popup = document.getElementById('skill-popup');
+
+            skillCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const skillName = card.querySelector('h3').innerText;
+                    popup.innerText = skillName;
+                    popup.style.display = 'block';
+                    // نخفي البوب بعد 2 ثانية
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                    }, 2000);
+                });
+            });
+        </script>
+
+        <div class="skills-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1.5 max-h-[450px] overflow-y-auto">
+            <!-- Java -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up">
+                <i class="fab fa-java text-base mb-0.5 text-yellow-300"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Java</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Back-End dev.</p>
+            </div>
+            <!-- Spring Boot -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="25">
+                <i class="fas fa-leaf text-base mb-0.5 text-green-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Spring Boot</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Java framework.</p>
+            </div>
+            <!-- MongoDB -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="50">
+                <i class="fas fa-database text-base mb-0.5 text-blue-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">MongoDB</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">NoSQL storage.</p>
+            </div>
+            <!-- Postman -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="75">
+                <i class="fas fa-tools text-base mb-0.5 text-purple-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Postman</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">API testing.</p>
+            </div>
+            <!-- Git & GitHub -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="100">
+                <i class="fab fa-github text-base mb-0.5 text-gray-300"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Git & GitHub</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Version control.</p>
+            </div>
+            <!-- Basic SQL -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="125">
+                <i class="fas fa-table text-base mb-0.5 text-teal-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Basic SQL</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Relational DB.</p>
+            </div>
+            <!-- Docker -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="150">
+                <i class="fab fa-docker text-base mb-0.5 text-blue-300"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Docker</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Containerization.</p>
+            </div>
+            <!-- Microservices -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="175">
+                <i class="fas fa-project-diagram text-base mb-0.5 text-purple-300"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Microservices</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Scalable apps.</p>
+            </div>
+            <!-- Maven -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-cogs text-base mb-0.5 text-yellow-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Maven</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Build automation.</p>
+            </div>
+            <!-- Agile Methodology -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="225">
+                <i class="fas fa-sitemap text-base mb-0.5 text-green-300"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Agile Methodology</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Iterative PM.</p>
+            </div>
+            <!-- Problem Solving -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="250">
+                <i class="fas fa-lightbulb text-base mb-0.5 text-yellow-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Problem Solving</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Coding solutions.</p>
+            </div>
+            <!-- Teamwork -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="275">
+                <i class="fas fa-users text-base mb-0.5 text-green-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Teamwork</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Collaboration.</p>
+            </div>
+            <!-- Time Management -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-clock text-base mb-0.5 text-blue-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Time Management</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Deadlines.</p>
+            </div>
+            <!-- Communication -->
+            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="325">
+                <i class="fas fa-comments text-base mb-0.5 text-purple-400"></i>
+                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Communication</h3>
+                <p class="text-[0.5rem] opacity-90 text-gray-200">Team interaction.</p>
+            </div>
+        </div>
+    </section>
+    <!-- قسم التواصل -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 my-12 text-center">
+        <h2 class="text-3xl font-bold mb-6 text-teal-300" data-aos="fade-up">📞 Contact Me</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <a href="mailto:mohamedcody18@gmail.com" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
+                <i class="fas fa-envelope text-3xl text-yellow-300 mb-1"></i>
+                <p class="text-sm">Email</p>
+                <p class="text-xs opacity-90">mohamedcody18@gmail.com</p>
+            </a>
+            <a href="https://wa.me/01148415128" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
+                <i class="fab fa-whatsapp text-3xl text-green-400 mb-1"></i>
+                <p class="text-sm">WhatsApp</p>
+                <p class="text-xs opacity-90">01148415128</p>
+            </a>
+            <a href="https://www.instagram.com/mohamedsaad8580" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
+                <i class="fab fa-instagram text-3xl text-pink-400 mb-1"></i>
+                <p class="text-sm">Instagram</p>
+                <p class="text-xs opacity-90">@mohamedsaad8580</p>
+            </a>
+            <a href="https://www.facebook.com/mohamed.saad.424337" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
+                <i class="fab fa-facebook text-3xl text-blue-600 mb-1"></i>
+                <p class="text-sm">Facebook</p>
+                <p class="text-xs opacity-90">Mohamed Saad</p>
+            </a>
+            <a href="https://www.linkedin.com/in/mohamed-cody-394b98372/" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
+                <i class="fab fa-linkedin text-3xl text-blue-400 mb-1"></i>
+                <p class="text-sm">LinkedIn</p>
+                <p class="text-xs opacity-90">Mohamed Cody</p>
+            </a>
+            <a href="https://github.com/mohamedcody" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
+                <i class="fab fa-github text-3xl text-gray-400 mb-1"></i>
+                <p class="text-sm">GitHub</p>
+                <p class="text-xs opacity-90">mohamedcody</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-sm opacity-80">
+        <div class="flex items-center justify-center gap-6 mb-3">
+            <a href="mailto:mohamedcody18@gmail.com" class="hover:text-yellow-300"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/201148415128" target="_blank" class="hover:text-green-400"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-cody-394b98372" target="_blank" class="hover:text-blue-400"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/mohamedcody" target="_blank" class="hover:text-gray-300"><i class="fa-brands fa-github"></i></a>
+            <a href="https://facebook.com/mohamed.saad" target="_blank" class="hover:text-blue-500"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        © 2025 Mohamed Saad Abdallah — All rights reserved
+    </footer>
+</div>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 700, once: true });
+</script>
+</body>
+</html>
