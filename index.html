@@ -71,43 +71,136 @@
     .premium-card { transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
     .premium-card:hover { transform: translateY(-6px); border-color: rgba(103,232,249,.42); box-shadow: 0 26px 76px rgba(34,211,238,.14); }
 
+    .hero-shell {
+      position: relative;
+      padding-block: clamp(2.25rem, 4vw, 5rem);
+    }
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      inset: -8% -4% auto auto;
+      width: min(34vw, 440px);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(34,211,238,.2), transparent 66%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .hero-kicker {
+      box-shadow: inset 0 0 24px rgba(34, 211, 238, .08), 0 0 40px rgba(34, 211, 238, .08);
+    }
+    .hero-copy { max-width: 720px; }
+    .tech-tile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 92px;
+      border-radius: 24px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.026));
+      border: 1px solid rgba(148, 163, 184, .16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+    .tech-tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, .4);
+      background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(139,92,246,.08));
+    }
+    .icon-box {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
     .portrait-wrap {
       position: relative;
-      min-height: 580px;
       isolation: isolate;
+      max-width: 540px;
+      margin-inline: auto;
+      padding: 22px;
+    }
+    .portrait-wrap::before,
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .portrait-wrap::before {
+      inset: 5% 0 auto auto;
+      width: 72%;
+      aspect-ratio: 1;
+      background: rgba(124, 58, 237, .2);
+      filter: blur(48px);
+    }
+    .portrait-wrap::after {
+      left: 0;
+      bottom: 2%;
+      width: 58%;
+      aspect-ratio: 1;
+      background: rgba(16, 185, 129, .13);
+      filter: blur(44px);
+    }
+    .portrait-card {
+      position: relative;
+      border-radius: 42px;
+      padding: 12px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.04)) border-box,
+        rgba(8, 13, 31, .72) padding-box;
+      border: 1px solid transparent;
+      box-shadow: 0 40px 110px rgba(0,0,0,.54), 0 0 90px rgba(124,58,237,.18);
+      backdrop-filter: blur(18px);
     }
     .portrait-frame {
-      position: absolute;
-      inset: 42px 34px 24px 52px;
-      border-radius: 42px;
+      position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 40px 110px rgba(0,0,0,.58);
-      transform: rotate(-2deg);
-      background: #111827;
+      min-height: clamp(390px, 54vw, 620px);
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(15,23,42,.9), rgba(49,46,129,.42));
     }
-    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: contrast(1.04) saturate(1.05); }
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      object-position: center 26%;
+      filter: contrast(1.05) saturate(1.06);
+    }
     .portrait-frame::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 42%, rgba(5,8,22,.72));
+      background:
+        linear-gradient(180deg, transparent 50%, rgba(5,8,22,.5)),
+        radial-gradient(circle at 50% 12%, transparent 42%, rgba(8,13,31,.18));
+      pointer-events: none;
     }
-    .orbit-card {
+    .micro-card {
       position: absolute;
-      z-index: 2;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(245px, 44vw);
       border-radius: 22px;
-      padding: 18px;
-      background: rgba(8, 13, 31, .82);
+      padding: 14px 16px;
+      background: rgba(8, 13, 31, .86);
       border: 1px solid rgba(255,255,255,.16);
       box-shadow: 0 20px 55px rgba(0,0,0,.38);
       backdrop-filter: blur(18px);
       animation: float 6s ease-in-out infinite;
     }
-    .orbit-card.one { left: 0; top: 118px; max-width: 220px; }
-    .orbit-card.two { right: 0; bottom: 100px; max-width: 230px; animation-delay: -2s; }
-    .orbit-card.three { left: 70px; bottom: 26px; max-width: 250px; animation-delay: -4s; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    .micro-card.top { left: -10px; top: 72px; }
+    .micro-card.bottom { right: -10px; bottom: 78px; animation-delay: -2.4s; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
     .browser-shell {
       border-radius: 28px;
@@ -135,13 +228,24 @@
     .timeline-step:last-child::after { display:none; }
 
     @media (max-width: 900px) {
-      .portrait-wrap { min-height: 520px; }
-      .portrait-frame { inset: 30px 22px 70px 22px; }
-      .orbit-card.one { left: 8px; top: 26px; }
-      .orbit-card.two { right: 6px; bottom: 30px; }
-      .orbit-card.three { display:none; }
+      .hero-copy { max-width: none; }
+      .portrait-wrap { max-width: 500px; }
+      .micro-card.top { left: 0; top: 56px; }
+      .micro-card.bottom { right: 0; bottom: 56px; }
       .jobfinder-screen { grid-template-columns: 1fr; }
       .sidebar { display:none; }
+    }
+    @media (max-width: 640px) {
+      .portrait-wrap { padding: 12px; }
+      .portrait-frame { min-height: 420px; }
+      .micro-card {
+        position: relative;
+        width: 100%;
+        margin-top: 12px;
+        animation: none;
+      }
+      .micro-card.top,
+      .micro-card.bottom { inset: auto; }
     }
   </style>
 </head>
@@ -163,33 +267,74 @@
   </header>
 
   <main id="top" class="pt-32">
-    <section class="container-wide grid lg:grid-cols-[1.02fr_.98fr] gap-12 items-center min-h-[calc(100vh-8rem)]">
-      <div data-aos="fade-up">
-        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-black uppercase tracking-[.24em] text-cyan-200">
-          <span class="h-2 w-2 rounded-full bg-emerald-300"></span> Product-minded back-end developer
+    <section class="container-wide hero-shell grid lg:grid-cols-[1.03fr_.97fr] gap-12 xl:gap-16 items-center min-h-[calc(100vh-8rem)]">
+      <div class="hero-copy order-2 lg:order-1" data-aos="fade-up">
+        <p class="hero-kicker mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-black uppercase tracking-[.24em] text-cyan-200">
+          <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,.9)]"></span>
+          Product-Minded Backend Developer
         </p>
-        <h1 class="text-5xl md:text-7xl font-black leading-[.96] tracking-[-.06em]">
-          I build serious APIs and startup-quality product systems.
+
+        <p class="mb-4 text-lg font-bold text-slate-200">Mohamed Saad Abdalla</p>
+        <h1 class="text-5xl md:text-6xl xl:text-7xl font-black leading-[.94] tracking-[-.06em]">
+          <span class="gradient-text">I build robust APIs</span> and startup-quality production systems.
         </h1>
         <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-          I’m <strong class="text-white">Mohamed Saad Abdallah</strong>, a Java / Spring Boot developer focused on reliable REST APIs, clean data models, authentication, and product experiences that feel ready for real users — not demos.
+          I am a specialized <strong class="text-white">Java / Spring Boot</strong> developer focusing on reliable REST APIs, complex data models, and scalable architectures. I deliver production-ready systems, not just demos.
         </p>
+
         <div class="mt-9 flex flex-col sm:flex-row gap-4">
-          <a href="#case-study" class="btn-primary inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-4 font-black transition"><i class="fa-solid fa-rocket"></i> View JobFinder case study</a>
-          <a href="https://github.com/mohamedcody" target="_blank" class="glass inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-4 font-bold text-slate-200 transition hover:-translate-y-0.5"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="#case-study" class="btn-primary group inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 font-black transition">
+            <i class="fa-solid fa-rocket transition group-hover:rotate-12"></i>
+            View Job Finder Case Study
+          </a>
+          <a href="https://github.com/mohamedcody" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-white/[.03] px-7 py-4 font-bold text-slate-200 shadow-2xl shadow-black/20 backdrop-blur transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-white">
+            <i class="fa-brands fa-github text-xl"></i>
+            GitHub
+          </a>
         </div>
-        <div class="mt-10 grid grid-cols-3 gap-3 max-w-2xl">
-          <div class="glass rounded-2xl p-4"><div class="text-2xl font-black">REST</div><div class="text-xs uppercase tracking-widest text-slate-400">API design</div></div>
-          <div class="glass rounded-2xl p-4"><div class="text-2xl font-black">JWT</div><div class="text-xs uppercase tracking-widest text-slate-400">Auth flows</div></div>
-          <div class="glass rounded-2xl p-4"><div class="text-2xl font-black">DB</div><div class="text-xs uppercase tracking-widest text-slate-400">SQL / Mongo</div></div>
+
+        <div class="mt-10 grid gap-3 sm:grid-cols-2" aria-label="Technical stack highlights">
+          <div class="tech-tile">
+            <span class="icon-box text-cyan-300"><i class="fa-solid fa-plug-circle-bolt text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">REST APIs</p><p class="font-black text-white">Scalable Design & Robust Architecture.</p></div>
+          </div>
+          <div class="tech-tile">
+            <span class="icon-box text-emerald-300"><i class="fa-solid fa-shield-halved text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">Authentication</p><p class="font-black text-white">Secure JWT & OAuth Flows.</p></div>
+          </div>
+          <div class="tech-tile">
+            <span class="icon-box text-violet-300"><i class="fa-solid fa-database text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">Databases</p><p class="font-black text-white">Advanced PostgreSQL & MySQL Design.</p></div>
+          </div>
+          <div class="tech-tile">
+            <span class="icon-box text-orange-300"><i class="fa-solid fa-vial-circle-check text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">API Tooling</p><p class="font-black text-white">Postman, Automation & Clear Documentation.</p></div>
+          </div>
+        </div>
+        <div class="mt-5 flex flex-wrap gap-2 text-xs font-bold text-slate-300">
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2"><i class="fa-brands fa-java text-yellow-300"></i> Java</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2"><i class="fa-solid fa-leaf text-emerald-300"></i> Spring Boot</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">PostgreSQL</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">MySQL</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">MongoDB</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">REST API Design</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">JWT</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">Postman</span>
         </div>
       </div>
 
-      <div class="portrait-wrap" data-aos="zoom-in">
-        <div class="portrait-frame"><img src="images/myphoto.jpg" alt="Mohamed Saad Abdallah in a professional travel portrait" /></div>
-        <div class="orbit-card one"><p class="text-xs uppercase tracking-[.2em] text-cyan-200 font-black">Brand signal</p><p class="mt-2 text-sm text-slate-300">Professional, confident founder-style portrait with warm editorial contrast.</p></div>
-        <div class="orbit-card two"><p class="text-3xl font-black gradient-text">Production Mindset</p><p class="mt-2 text-sm text-slate-300">APIs, persistence, validation, and product polish.</p></div>
-        <div class="orbit-card three"><p class="font-black"><i class="fa-solid fa-shield-halved text-emerald-300"></i> Trustworthy builder</p><p class="mt-1 text-sm text-slate-300">Clean architecture for maintainable systems.</p></div>
+      <div class="portrait-wrap order-1 lg:order-2" data-aos="zoom-in">
+        <div class="portrait-card">
+          <div class="portrait-frame"><img src="images/myph.jpeg" alt="Mohamed Saad Abdalla professional profile portrait" /></div>
+        </div>
+        <div class="micro-card top">
+          <span class="icon-box h-12 w-12 text-cyan-300"><i class="fa-solid fa-code-branch"></i></span>
+          <div><p class="text-sm font-black text-white">Clean Architecture</p><p class="text-xs text-slate-400">Maintainable API layers</p></div>
+        </div>
+        <div class="micro-card bottom">
+          <span class="icon-box h-12 w-12 text-emerald-300"><i class="fa-solid fa-lock"></i></span>
+          <div><p class="text-sm font-black text-white">Secure Auth Flows</p><p class="text-xs text-slate-400">JWT-ready production logic</p></div>
+        </div>
       </div>
     </section>
 
