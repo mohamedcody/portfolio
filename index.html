@@ -1,480 +1,467 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mohamed Saad Abdallah - Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Mohamed Saad Abdallah — Back-End Developer building production-minded APIs, data systems, and AI-powered product experiences." />
+  <title>Mohamed Saad Abdallah — Product-Minded Back-End Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #f8fbff;
+      --muted: #9fb0c7;
+      --panel: rgba(9, 14, 34, .72);
+      --panel-strong: rgba(16, 22, 48, .92);
+      --line: rgba(148, 163, 184, .18);
+      --violet: #8b5cf6;
+      --purple: #6d28d9;
+      --cyan: #22d3ee;
+      --mint: #00ffc2;
+      --gold: #fbbf24;
+    }
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS for simple animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Font Awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-            /* خصائص بسيطة للتجاوب مع الخلفية */
-        html, body { height: 100%; }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;
-            /* انسخ السطر ده */
-            background: linear-gradient(135deg, #141e30, #243b55);
-            background-size: 400% 400%;
-            animation: gradientMove 50s ease infinite;
-            color: #ffffff;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(139, 92, 246, .26), transparent 30rem),
+        radial-gradient(circle at 80% 0%, rgba(34, 211, 238, .16), transparent 26rem),
+        radial-gradient(circle at 70% 72%, rgba(0, 255, 194, .10), transparent 28rem),
+        linear-gradient(135deg, #050816 0%, #080b1c 48%, #10142d 100%);
+      overflow-x: hidden;
+    }
 
-        /* حركة الخلفية */
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, black, transparent 76%);
+      opacity: .42;
+      z-index: -1;
+    }
 
-        /* لوحة شفافة فوق الخلفية لسهولة القراءة */
-        .glass {
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(6px);
-        }
+    .container-wide { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .32);
+      backdrop-filter: blur(18px);
+    }
+    .gradient-text {
+      background: linear-gradient(100deg, #fff 0%, #c4b5fd 32%, #67e8f9 68%, #fff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #9333ea 48%, #06b6d4);
+      box-shadow: 0 18px 42px rgba(124, 58, 237, .38);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 24px 56px rgba(34, 211, 238, .24); }
+    .premium-card { transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
+    .premium-card:hover { transform: translateY(-6px); border-color: rgba(103,232,249,.42); box-shadow: 0 26px 76px rgba(34,211,238,.14); }
 
-        /* حدود الصورة الدائرية أكبر */
-        .profile-circle {
-            width: 350px;
-            height: 350px;
-            border-radius: 9999px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(2,6,23,0.6);
-            border: 5px solid rgba(255,255,255,0.1);
-            margin: 20px auto;
-        }
+    .hero-shell {
+      position: relative;
+      padding-block: clamp(2.25rem, 4vw, 5rem);
+    }
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      inset: -8% -4% auto auto;
+      width: min(34vw, 440px);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(34,211,238,.2), transparent 66%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .hero-kicker {
+      box-shadow: inset 0 0 24px rgba(34, 211, 238, .08), 0 0 40px rgba(34, 211, 238, .08);
+    }
+    .hero-copy { max-width: 720px; }
+    .tech-tile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 92px;
+      border-radius: 24px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.026));
+      border: 1px solid rgba(148, 163, 184, .16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+    .tech-tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, .4);
+      background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(139,92,246,.08));
+    }
+    .icon-box {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .portrait-wrap {
+      position: relative;
+      isolation: isolate;
+      max-width: 540px;
+      margin-inline: auto;
+      padding: 22px;
+    }
+    .portrait-wrap::before,
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .portrait-wrap::before {
+      inset: 5% 0 auto auto;
+      width: 72%;
+      aspect-ratio: 1;
+      background: rgba(124, 58, 237, .2);
+      filter: blur(48px);
+    }
+    .portrait-wrap::after {
+      left: 0;
+      bottom: 2%;
+      width: 58%;
+      aspect-ratio: 1;
+      background: rgba(16, 185, 129, .13);
+      filter: blur(44px);
+    }
+    .portrait-card {
+      position: relative;
+      border-radius: 42px;
+      padding: 12px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.04)) border-box,
+        rgba(8, 13, 31, .72) padding-box;
+      border: 1px solid transparent;
+      box-shadow: 0 40px 110px rgba(0,0,0,.54), 0 0 90px rgba(124,58,237,.18);
+      backdrop-filter: blur(18px);
+    }
+    .portrait-frame {
+      position: relative;
+      overflow: hidden;
+      min-height: clamp(390px, 54vw, 620px);
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(15,23,42,.9), rgba(49,46,129,.42));
+    }
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      object-position: center 26%;
+      filter: contrast(1.05) saturate(1.06);
+    }
+    .portrait-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 50%, rgba(5,8,22,.5)),
+        radial-gradient(circle at 50% 12%, transparent 42%, rgba(8,13,31,.18));
+      pointer-events: none;
+    }
+    .micro-card {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(245px, 44vw);
+      border-radius: 22px;
+      padding: 14px 16px;
+      background: rgba(8, 13, 31, .86);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 20px 55px rgba(0,0,0,.38);
+      backdrop-filter: blur(18px);
+      animation: float 6s ease-in-out infinite;
+    }
+    .micro-card.top { left: -10px; top: 72px; }
+    .micro-card.bottom { right: -10px; bottom: 78px; animation-delay: -2.4s; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* زر ارتكاز */
-        .cta {
-            background: linear-gradient(135deg, #ff0080, #7928ca, #2afadf, #00ff94);
-        }
+    .browser-shell {
+      border-radius: 28px;
+      border: 1px solid rgba(148,163,184,.24);
+      background: linear-gradient(145deg, rgba(12,16,36,.96), rgba(20,15,54,.92));
+      box-shadow: 0 34px 90px rgba(0,0,0,.42);
+      overflow: hidden;
+    }
+    .browser-bar { height: 46px; border-bottom: 1px solid var(--line); display:flex; align-items:center; gap:8px; padding:0 18px; background: rgba(255,255,255,.035); }
+    .dot { width: 10px; height: 10px; border-radius: 99px; background: #ef4444; }
+    .dot:nth-child(2){ background:#f59e0b; } .dot:nth-child(3){ background:#10b981; }
+    .jobfinder-screen { min-height: 430px; display:grid; grid-template-columns: 160px 1fr; background:#07091a; }
+    .sidebar { border-right:1px solid rgba(148,163,184,.14); padding:20px 14px; background:#0b0f24; }
+    .nav-pill { display:flex; align-items:center; gap:10px; margin:14px 0; padding:10px 12px; border-radius:16px; color:#8090ad; font-size:12px; font-weight:700; }
+    .nav-pill.active { color:white; background:linear-gradient(90deg, rgba(124,58,237,.72), rgba(124,58,237,.15)); }
+    .screen-content { padding:34px; position:relative; overflow:hidden; }
+    .screen-content::after { content:""; position:absolute; right:-70px; top:-80px; width:260px; height:260px; border-radius:999px; background:rgba(124,58,237,.22); filter:blur(34px); }
+    .metric { border:1px solid rgba(148,163,184,.18); border-radius:22px; padding:24px; background:rgba(255,255,255,.035); }
+    .kanban { min-height: 190px; border:1px solid rgba(148,163,184,.16); border-radius:22px; padding:14px; background:rgba(255,255,255,.026); }
+    .job-card { border:1px solid rgba(148,163,184,.16); border-radius:16px; padding:14px; background:#12162b; margin-top:12px; }
 
-        /* تحسين النص */
-        h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            text-shadow: 0 3px 15px rgba(0,0,0,0.55);
-        }
-        h2, h3 {
-            text-shadow: 0 2px 12px rgba(0,0,0,0.45);
-        }
+    .timeline-step { position: relative; padding-left: 28px; }
+    .timeline-step::before { content:""; position:absolute; left:0; top:7px; width:10px; height:10px; border-radius:99px; background:var(--cyan); box-shadow:0 0 0 8px rgba(34,211,238,.12); }
+    .timeline-step::after { content:""; position:absolute; left:4px; top:28px; bottom:-28px; width:1px; background:rgba(148,163,184,.22); }
+    .timeline-step:last-child::after { display:none; }
 
-        /* أنيميشن زر المشاريع */
-        .projects-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
-            background: linear-gradient(135deg, #facc15, #f97316);
-        }
-    </style>
+    @media (max-width: 900px) {
+      .hero-copy { max-width: none; }
+      .portrait-wrap { max-width: 500px; }
+      .micro-card.top { left: 0; top: 56px; }
+      .micro-card.bottom { right: 0; bottom: 56px; }
+      .jobfinder-screen { grid-template-columns: 1fr; }
+      .sidebar { display:none; }
+    }
+    @media (max-width: 640px) {
+      .portrait-wrap { padding: 12px; }
+      .portrait-frame { min-height: 420px; }
+      .micro-card {
+        position: relative;
+        width: 100%;
+        margin-top: 12px;
+        animation: none;
+      }
+      .micro-card.top,
+      .micro-card.bottom { inset: auto; }
+    }
+  </style>
 </head>
 <body>
-<!-- الحاوية الرئيسية -->
-<div class="min-h-screen flex flex-col">
-    <!-- ناف بار -->
-    <header class="fixed top-4 left-4 right-4 z-40">
-        <nav class="glass rounded-xl px-4 py-3 max-w-6xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-lg font-semibold">Mohamed Saad</span>
-                <span class="text-xs opacity-70">Back-End Developer</span>
-            </div>
-            <ul class="hidden md:flex items-center gap-6 text-sm">
-                <li><a href="#about" class="hover:text-yellow-300 transition">عنّي</a></li>
-                <li><a href="#services" class="hover:text-yellow-300 transition">خدمات</a></li>
-                <li><a href="#skills" class="hover:text-yellow-300 transition">مهارات</a></li>
-                <li><a href="#projects" class="hover:text-yellow-300 transition">مشاريعي</a></li>
-                <li><a href="#contact" class="hover:text-yellow-300 transition">تواصل</a></li>
-            </ul>
-            <div class="md:hidden">
-                <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
-                        class="p-2 rounded-md glass">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-        <!-- قائمة موبايل -->
-        <div id="mobileMenu" class="hidden max-w-6xl mx-auto mt-2 px-4">
-            <div class="glass rounded-xl p-3 flex flex-col gap-2">
-                <a href="#about" class="py-2">عنّي</a>
-                <a href="#services" class="py-2">خدمات</a>
-                <a href="#skills" class="py-2">مهارات</a>
-                <a href="#projects" class="py-2">مشاريعي</a>
-                <a href="#contact" class="py-2">تواصل</a>
-            </div>
+  <header class="fixed top-4 left-4 right-4 z-50">
+    <nav class="container-wide glass rounded-2xl px-5 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 font-black tracking-tight">
+        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-violet-600 shadow-lg shadow-violet-600/30"><i class="fa-solid fa-code"></i></span>
+        <span>Mohamed<span class="text-cyan-300">Cody</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#case-study" class="hover:text-white">Case Study</a>
+        <a href="#stack" class="hover:text-white">Stack</a>
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </div>
+      <a href="#contact" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold transition">Hire Mohamed</a>
+    </nav>
+  </header>
+
+  <main id="top" class="pt-32">
+    <section class="container-wide hero-shell grid lg:grid-cols-[1.03fr_.97fr] gap-12 xl:gap-16 items-center min-h-[calc(100vh-8rem)]">
+      <div class="hero-copy order-2 lg:order-1" data-aos="fade-up">
+        <p class="hero-kicker mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-black uppercase tracking-[.24em] text-cyan-200">
+          <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,.9)]"></span>
+          Product-Minded Backend Developer
+        </p>
+
+        <p class="mb-4 text-lg font-bold text-slate-200">Mohamed Saad Abdalla</p>
+        <h1 class="text-5xl md:text-6xl xl:text-7xl font-black leading-[.94] tracking-[-.06em]">
+          <span class="gradient-text">I build robust APIs</span> and startup-quality production systems.
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
+          I am a specialized <strong class="text-white">Java / Spring Boot</strong> developer focusing on reliable REST APIs, complex data models, and scalable architectures. I deliver production-ready systems, not just demos.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-4">
+          <a href="#case-study" class="btn-primary group inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 font-black transition">
+            <i class="fa-solid fa-rocket transition group-hover:rotate-12"></i>
+            View Job Finder Case Study
+          </a>
+          <a href="https://github.com/mohamedcody" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-white/[.03] px-7 py-4 font-bold text-slate-200 shadow-2xl shadow-black/20 backdrop-blur transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-white">
+            <i class="fa-brands fa-github text-xl"></i>
+            GitHub
+          </a>
         </div>
-    </header>
 
-    <!-- hero: صورة على جنب + نص واضح -->
-    <main class="flex-1 flex items-center">
-        <div class="max-w-6xl mx-auto w-full px-6 py-24">
-            <div class="grid md:grid-cols-2 gap-10 items-center">
-                <!-- يمين (نص) -->
-                <div class="text-right" data-aos="fade-left">
-                    <p class="hello mb-4">👋 مرحباً — أنا</p>
-                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight name-glow">
-                        <span dir="ltr">Mohamed Saad Abdallah</span>
-                    </h1>
-                    <p class="mt-4 text-lg opacity-90 max-w-xl">
-                        مطور Back-End بخبرة في Java وSpring Boot. أقدّم حلول API احترافية، تصميم قواعد بيانات، وعمليات CRUD متقدّمة. أعمل على بناء أنظمة موثوقة وسهلة الصيانة.
-                    </p>
-                    <!-- أزرار دعوة لاتخاذ إجراء -->
-                    <div class="mt-8 flex gap-4">
-                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-lg cta shadow-lg">
-                            <i class="fa fa-paper-plane"></i>
-                            تواصل معي
-                        </a>
-                        <a href="#services" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-lg glass hover:opacity-95">
-                            <i class="fa fa-briefcase"></i>
-                            خدماتي
-                        </a>
-                        <a href="#projects" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-lg projects-btn glass hover:opacity-95 transition duration-300">
-                            <i class="fa fa-project-diagram"></i>
-                            مشاريعي
-                        </a>
-                    </div>
-                    <!-- بطاقة مختصرة للخدمات الأساسية -->
-                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="glass rounded-xl p-4 flex items-start gap-3">
-                            <div class="text-2xl p-3 rounded-lg bg-white/10 shrink-0">
-                                <i class="fa fa-dollar-sign"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">CV Design (محترف)</h3>
-                                <p class="text-sm opacity-80">تصميم سيرة ذاتية بصيغة احترافية جاهزة للشركات — PDF / LinkedIn friendly.</p>
-                            </div>
-                        </div>
-                        <div class="glass rounded-xl p-4 flex items-start gap-3">
-                            <div class="text-2xl p-3 rounded-lg bg-white/10 shrink-0">
-                                <i class="fa fa-code"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">API & Backend</h3>
-                                <p class="text-sm opacity-80">CRUD • Aggregation • API Requests • Pagination • Auth & Validation</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- نظرة مختصرة للأدوات -->
-                    <div class="mt-6 flex flex-wrap gap-3">
-                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Java</span>
-                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Spring Boot</span>
-                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">MongoDB / SQL</span>
-                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">REST APIs</span>
-                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Postman</span>
-                        <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Git</span>
-                    </div>
-                </div>
-
-                <!-- يسار: صورة دائرية كبيرة -->
-                <div class="flex justify-center md:justify-start" data-aos="fade-right">
-                    <div class="profile-circle">
-                        <img src="images/myphoto.jpg" alt="Mohamed Saad" class="w-full h-full object-cover" />
-                    </div>
-                </div>
-            </div>
+        <div class="mt-10 grid gap-3 sm:grid-cols-2" aria-label="Technical stack highlights">
+          <div class="tech-tile">
+            <span class="icon-box text-cyan-300"><i class="fa-solid fa-plug-circle-bolt text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">REST APIs</p><p class="font-black text-white">Scalable Design & Robust Architecture.</p></div>
+          </div>
+          <div class="tech-tile">
+            <span class="icon-box text-emerald-300"><i class="fa-solid fa-shield-halved text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">Authentication</p><p class="font-black text-white">Secure JWT & OAuth Flows.</p></div>
+          </div>
+          <div class="tech-tile">
+            <span class="icon-box text-violet-300"><i class="fa-solid fa-database text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">Databases</p><p class="font-black text-white">Advanced PostgreSQL & MySQL Design.</p></div>
+          </div>
+          <div class="tech-tile">
+            <span class="icon-box text-orange-300"><i class="fa-solid fa-vial-circle-check text-xl"></i></span>
+            <div><p class="text-xs font-black uppercase tracking-[.18em] text-slate-400">API Tooling</p><p class="font-black text-white">Postman, Automation & Clear Documentation.</p></div>
+          </div>
         </div>
-    </main>
-
-    <!-- قسم الخدمات بالتفصيل -->
-    <section id="services" class="max-w-6xl mx-auto px-6 py-12">
-        <div class="glass rounded-2xl p-8">
-            <h2 class="text-2xl font-bold mb-8 text-center">Back-End Services I Offer</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- CRUD APIs -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-database text-3xl text-yellow-300"></i>
-                        <h3 class="font-semibold text-lg">CRUD APIs بسيطة</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        إنشاء واجهات برمجة تطبيقات لإدارة بيانات المستخدمين أو المنتجات أو المهام، مع عمليات Create/Read/Update/Delete.
-                    </p>
-                    <p class="text-xs opacity-70">مثال: To-Do List API أو Blog Posts API.</p>
-                </div>
-                <!-- Authentication -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-lock text-3xl text-green-400"></i>
-                        <h3 class="font-semibold text-lg">Authentication أساسية</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        تسجيل دخول وتسجيل مستخدمين مع حفظ كلمة المرور بشكل آمن واستخدام JWT بسيط للمصادقة.
-                    </p>
-                    <p class="text-xs opacity-70">مثال: Login/Register API.</p>
-                </div>
-                <!-- Pagination & Sorting -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-sort text-3xl text-purple-400"></i>
-                        <h3 class="font-semibold text-lg">Pagination & Sorting</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        عرض البيانات مقسمة صفحات وترتيبها حسب الاسم أو التاريخ لتسهيل عرض المعلومات.
-                    </p>
-                    <p class="text-xs opacity-70">مثال: عرض المستخدمين 10 في كل صفحة.</p>
-                </div>
-                <!-- Database Design -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-layer-group text-3xl text-blue-400"></i>
-                        <h3 class="font-semibold text-lg">تصميم قواعد بيانات بسيطة</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        تصميم جداول SQL أو Collections في MongoDB بشكل منظم للعلاقات الأساسية بين البيانات.
-                    </p>
-                    <p class="text-xs opacity-70">مثال: Users, Products, Orders.</p>
-                </div>
-                <!-- API Documentation -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="400">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-file-alt text-3xl text-red-400"></i>
-                        <h3 class="font-semibold text-lg">توثيق API</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        شرح طرق استخدام API الخاصة بك لكل Endpoint مع أمثلة بسيطة على GET, POST, PUT, DELETE.
-                    </p>
-                    <p class="text-xs opacity-70">مثال: ملف README أو صفحة API Docs بسيطة.</p>
-                </div>
-                <!-- Validation بسيطة -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="500">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-check-circle text-3xl text-teal-400"></i>
-                        <h3 class="font-semibold text-lg">Validation بسيطة</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        التحقق من البيانات المدخلة: البريد الإلكتروني، كلمة المرور، أرقام الهاتف، لضمان صحة البيانات قبل المعالجة.
-                    </p>
-                    <p class="text-xs opacity-70">مثال: التأكد من أن البريد الإلكتروني صحيح وطول كلمة المرور مناسب.</p>
-                </div>
-            </div>
+        <div class="mt-5 flex flex-wrap gap-2 text-xs font-bold text-slate-300">
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2"><i class="fa-brands fa-java text-yellow-300"></i> Java</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2"><i class="fa-solid fa-leaf text-emerald-300"></i> Spring Boot</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">PostgreSQL</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">MySQL</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">MongoDB</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">REST API Design</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">JWT</span>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2">Postman</span>
         </div>
+      </div>
+
+      <div class="portrait-wrap order-1 lg:order-2" data-aos="zoom-in">
+        <div class="portrait-card">
+          <div class="portrait-frame"><img src="images/myph.jpeg" alt="Mohamed Saad Abdalla professional profile portrait" /></div>
+        </div>
+        <div class="micro-card top">
+          <span class="icon-box h-12 w-12 text-cyan-300"><i class="fa-solid fa-code-branch"></i></span>
+          <div><p class="text-sm font-black text-white">Clean Architecture</p><p class="text-xs text-slate-400">Maintainable API layers</p></div>
+        </div>
+        <div class="micro-card bottom">
+          <span class="icon-box h-12 w-12 text-emerald-300"><i class="fa-solid fa-lock"></i></span>
+          <div><p class="text-sm font-black text-white">Secure Auth Flows</p><p class="text-xs text-slate-400">JWT-ready production logic</p></div>
+        </div>
+      </div>
     </section>
 
-    <!-- قسم المشاريع -->
-    <section id="projects" class="max-w-6xl mx-auto px-6 py-12">
-        <div class="glass rounded-2xl p-8">
-            <h2 class="text-2xl font-bold mb-8 text-center">مشاريعي</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- مشروع 1: Marketly -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-store text-3xl text-yellow-300"></i>
-                        <h3 class="font-semibold text-lg">Marketly</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        تطبيق سوق إلكتروني تم تطويره باستخدام Java وSpring Boot، يدعم إدارة المنتجات، العملاء، ومعالجة الطلبات.
-                    </p>
-                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, MongoDB, REST APIs</p>
-                    <a href="https://github.com/mohamedcody/marketly" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
-                </div>
-                <!-- مشروع 2: Employee Management System -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-users text-3xl text-green-400"></i>
-                        <h3 class="font-semibold text-lg">نظام إدارة الموظفين</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        نظام لإدارة الموظفين باستخدام Java وSpring Boot، يدعم عمليات CRUD لسجلات الموظفين مع تكامل قاعدة بيانات.
-                    </p>
-                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, SQL</p>
-                    <a href="https://github.com/mohamedcody/employee-management" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
-                </div>
-                <!-- مشروع 3: E-Commerce Application -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-shopping-cart text-3xl text-purple-400"></i>
-                        <h3 class="font-semibold text-lg">تطبيق التجارة الإلكترونية</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        تطبيق تجارة إلكترونية كامل باستخدام Java، Spring Boot، وMongoDB، يدعم كتالوج المنتجات، سلة التسوق، إدارة الطلبات، والمصادقة.
-                    </p>
-                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, MongoDB, JWT</p>
-                    <a href="https://github.com/mohamedcody/ecommerce-app" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
-                </div>
-                <!-- مشروع 4: Hotely -->
-                <div class="p-5 rounded-xl bg-white/5 text-right" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i class="fas fa-hotel text-3xl text-blue-400"></i>
-                        <h3 class="font-semibold text-lg">Hotely</h3>
-                    </div>
-                    <p class="text-sm opacity-90 mb-2">
-                        نظام إدارة فندق باستخدام Java وSpring Boot، يدعم حجز الغرف، إدارة العملاء، والفوترة.
-                    </p>
-                    <p class="text-xs opacity-70">تقنيات: Java, Spring Boot, SQL</p>
-                    <a href="https://github.com/mohamedcody/hotely" target="_blank" class="inline-block mt-3 text-sm text-yellow-300 hover:underline">شوف الكود</a>
-                </div>
+    <section id="case-study" class="container-wide py-24">
+      <div class="mb-12 max-w-3xl" data-aos="fade-up">
+        <p class="text-sm font-black uppercase tracking-[.28em] text-violet-300">Featured product case study</p>
+        <h2 class="mt-4 text-4xl md:text-6xl font-black tracking-[-.05em]">JobFinder — AI-powered job search platform</h2>
+        <p class="mt-5 text-lg leading-8 text-slate-300">From the provided screens, JobFinder is a dark, premium SaaS-style platform with AI matching, curated roles, saved-match pipeline tracking, profile intelligence, market readiness, and a command-search experience.</p>
+      </div>
+
+      <div class="browser-shell" data-aos="fade-up">
+        <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="ml-4 rounded-full bg-white/5 px-4 py-1 text-xs text-slate-400">jobfinder.ai / dashboard</span></div>
+        <div class="jobfinder-screen">
+          <aside class="sidebar">
+            <div class="mb-8 flex items-center gap-2 font-black"><span class="grid h-8 w-8 place-items-center rounded-xl bg-violet-600">✦</span>JobFinder</div>
+            <div class="nav-pill active"><i class="fa-solid fa-border-all"></i>Dashboard</div>
+            <div class="nav-pill"><i class="fa-solid fa-briefcase"></i>Explore Jobs</div>
+            <div class="nav-pill"><i class="fa-regular fa-bookmark"></i>Saved Matches</div>
+            <div class="nav-pill"><i class="fa-regular fa-user"></i>My Profile</div>
+          </aside>
+          <div class="screen-content">
+            <div class="rounded-[28px] border border-violet-400/20 bg-gradient-to-br from-violet-950/90 to-indigo-950/40 p-8">
+              <div class="mb-5 inline-flex rounded-full border border-violet-300/20 bg-violet-400/10 px-4 py-2 text-xs font-black uppercase tracking-widest text-violet-200">Quantum analysis ready</div>
+              <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+                <div><h3 class="text-4xl md:text-5xl font-black tracking-[-.05em]">Hello, <span class="gradient-text">mohamedcody.</span></h3><p class="mt-4 text-slate-300">12 elite roles identified and ranked by fit, skills, and career trajectory.</p></div>
+                <button class="btn-primary rounded-2xl px-7 py-4 text-sm font-black">Explore Matches ↗</button>
+              </div>
             </div>
+            <div class="mt-7 grid md:grid-cols-3 gap-4">
+              <div class="metric"><i class="fa-solid fa-bolt text-violet-300"></i><div class="mt-8 text-4xl font-black">12</div><div class="text-xs uppercase tracking-widest text-slate-400">Active applications</div></div>
+              <div class="metric"><i class="fa-solid fa-briefcase text-cyan-300"></i><div class="mt-8 text-4xl font-black">48</div><div class="text-xs uppercase tracking-widest text-slate-400">New jobs today</div></div>
+              <div class="metric"><i class="fa-solid fa-bullseye text-emerald-300"></i><div class="mt-8 text-4xl font-black">85%</div><div class="text-xs uppercase tracking-widest text-slate-400">Market readiness</div></div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-2 gap-6">
+        <article class="glass premium-card rounded-3xl p-7" data-aos="fade-up">
+          <p class="text-xs font-black uppercase tracking-[.24em] text-cyan-200">Explore Jobs</p>
+          <h3 class="mt-3 text-2xl font-black">AI matching that explains why a role fits</h3>
+          <p class="mt-3 text-slate-300">The explore screen emphasizes verified opportunities, perfect-match badges, compatibility percentages, quick apply, AI insights, and a chatbot assistant.</p>
+          <div class="mt-6 rounded-3xl border border-violet-300/20 bg-gradient-to-r from-slate-950 to-violet-950/60 p-5">
+            <div class="flex flex-wrap gap-2 text-xs font-black"><span class="rounded-full bg-violet-500/20 px-3 py-1 text-violet-100">Perfect Match</span><span class="rounded-full bg-emerald-400/20 px-3 py-1 text-emerald-200">98% Compatibility</span></div>
+            <h4 class="mt-4 text-xl font-black">Senior Software Engineer <span class="text-slate-500">@ Remote</span></h4>
+            <p class="mt-2 text-sm text-slate-300">React, Node.js, and AWS ranked for career growth.</p>
+          </div>
+        </article>
+        <article class="glass premium-card rounded-3xl p-7" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-xs font-black uppercase tracking-[.24em] text-emerald-200">Saved Matches</p>
+          <h3 class="mt-3 text-2xl font-black">A recruiter-style application pipeline</h3>
+          <p class="mt-3 text-slate-300">Saved, applied, interview, and offer columns make job hunting feel measurable and operational instead of scattered.</p>
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <div class="kanban"><strong>Saved</strong><div class="job-card">Full Stack Engineer<br><span class="text-xs text-slate-400">Vallum Associates</span></div></div>
+            <div class="kanban"><strong class="text-emerald-300">Offer</strong><div class="job-card">Backend Software Engineer<br><span class="text-xs text-slate-400">Nclusion</span></div></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-16 grid lg:grid-cols-[.8fr_1.2fr] gap-10 items-start">
+        <div class="glass rounded-3xl p-8" data-aos="fade-right">
+          <h3 class="text-3xl font-black tracking-[-.03em]">Case study flow</h3>
+          <div class="mt-8 space-y-8">
+            <div class="timeline-step"><h4 class="font-black">Problem</h4><p class="text-slate-300">Job seekers lose time across boards, notes, and spreadsheets while missing role-fit signals.</p></div>
+            <div class="timeline-step"><h4 class="font-black">Research</h4><p class="text-slate-300">The screenshots reveal a need for matching quality, pipeline visibility, profile readiness, and fast search.</p></div>
+            <div class="timeline-step"><h4 class="font-black">Solution</h4><p class="text-slate-300">A premium command-center UI that combines AI-ranked roles, saved matches, market readiness, and profile intelligence.</p></div>
+            <div class="timeline-step"><h4 class="font-black">Features</h4><p class="text-slate-300">AI insights, chatbot guidance, quick apply, job tracking, market readiness scoring, profile optimization prompts.</p></div>
+            <div class="timeline-step"><h4 class="font-black">Technology Stack</h4><p class="text-slate-300">Spring Boot APIs, JWT auth, SQL / MongoDB persistence, search filters, application status workflows, and REST integrations.</p></div>
+            <div class="timeline-step"><h4 class="font-black">Results</h4><p class="text-slate-300">A startup-quality experience that turns job search into an actionable, measurable product journey.</p></div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5" data-aos="fade-left">
+          <div class="glass rounded-3xl p-6 premium-card"><i class="fa-solid fa-wand-magic-sparkles text-violet-300 text-2xl"></i><h4 class="mt-5 font-black text-xl">AI Ready state</h4><p class="mt-2 text-sm text-slate-300">Persistent system status builds confidence in automated matching.</p></div>
+          <div class="glass rounded-3xl p-6 premium-card"><i class="fa-solid fa-chart-simple text-cyan-300 text-2xl"></i><h4 class="mt-5 font-black text-xl">Market readiness</h4><p class="mt-2 text-sm text-slate-300">Profile health and next steps create a clear path to better matches.</p></div>
+          <div class="glass rounded-3xl p-6 premium-card"><i class="fa-solid fa-layer-group text-emerald-300 text-2xl"></i><h4 class="mt-5 font-black text-xl">Pipeline kanban</h4><p class="mt-2 text-sm text-slate-300">Saved, applied, interview, and offer stages mirror real recruiting workflows.</p></div>
+          <div class="glass rounded-3xl p-6 premium-card"><i class="fa-solid fa-terminal text-yellow-300 text-2xl"></i><h4 class="mt-5 font-black text-xl">Command search</h4><p class="mt-2 text-sm text-slate-300">Keyboard-first discovery makes the product feel powerful and fast.</p></div>
+        </div>
+      </div>
     </section>
 
-    <!-- قسم المهارات -->
-    <section id="skills" class="skills glass py-6 px-2 text-center">
-        <h2 class="text-lg font-bold mb-4 text-teal-300" data-aos="fade-up">⚡ Skills</h2>
-        <!-- إضافة div لعرض اسم المهارة -->
-        <div id="skill-popup" style="position:fixed;top:20px;right:20px;padding:10px 15px;background:#1e3a8a;color:white;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.5);display:none;z-index:1000;font-weight:bold;">
+    <section id="stack" class="container-wide py-20">
+      <div class="glass rounded-[34px] p-8 md:p-12" data-aos="fade-up">
+        <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-center">
+          <div><p class="text-sm font-black uppercase tracking-[.28em] text-cyan-200">Engineering toolkit</p><h2 class="mt-4 text-4xl font-black tracking-[-.04em]">Back-end foundations for products that scale.</h2><p class="mt-5 text-slate-300 leading-7">I focus on predictable API contracts, validation, authentication, clean persistence, and documentation that helps teams ship faster.</p></div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <span class="rounded-2xl border border-white/10 bg-white/5 p-4 font-bold"><i class="fa-brands fa-java text-yellow-300"></i> Java</span>
+            <span class="rounded-2xl border border-white/10 bg-white/5 p-4 font-bold"><i class="fa-solid fa-leaf text-emerald-300"></i> Spring Boot</span>
+            <span class="rounded-2xl border border-white/10 bg-white/5 p-4 font-bold"><i class="fa-solid fa-database text-cyan-300"></i> SQL / MongoDB</span>
+            <span class="rounded-2xl border border-white/10 bg-white/5 p-4 font-bold"><i class="fa-solid fa-key text-violet-300"></i> JWT Authentication</span>
+            <span class="rounded-2xl border border-white/10 bg-white/5 p-4 font-bold"><i class="fa-solid fa-server text-rose-300"></i> REST APIs</span>
+            <span class="rounded-2xl border border-white/10 bg-white/5 p-4 font-bold"><i class="fa-brands fa-docker text-blue-300"></i> Docker basics</span>
+          </div>
         </div>
-
-        <script>
-            const skillCards = document.querySelectorAll('.skill-card');
-            const popup = document.getElementById('skill-popup');
-
-            skillCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const skillName = card.querySelector('h3').innerText;
-                    popup.innerText = skillName;
-                    popup.style.display = 'block';
-                    // نخفي البوب بعد 2 ثانية
-                    setTimeout(() => {
-                        popup.style.display = 'none';
-                    }, 2000);
-                });
-            });
-        </script>
-
-        <div class="skills-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1.5 max-h-[450px] overflow-y-auto">
-            <!-- Java -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up">
-                <i class="fab fa-java text-base mb-0.5 text-yellow-300"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Java</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Back-End dev.</p>
-            </div>
-            <!-- Spring Boot -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="25">
-                <i class="fas fa-leaf text-base mb-0.5 text-green-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Spring Boot</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Java framework.</p>
-            </div>
-            <!-- MongoDB -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="50">
-                <i class="fas fa-database text-base mb-0.5 text-blue-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">MongoDB</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">NoSQL storage.</p>
-            </div>
-            <!-- Postman -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="75">
-                <i class="fas fa-tools text-base mb-0.5 text-purple-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Postman</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">API testing.</p>
-            </div>
-            <!-- Git & GitHub -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="100">
-                <i class="fab fa-github text-base mb-0.5 text-gray-300"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Git & GitHub</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Version control.</p>
-            </div>
-            <!-- Basic SQL -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="125">
-                <i class="fas fa-table text-base mb-0.5 text-teal-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Basic SQL</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Relational DB.</p>
-            </div>
-            <!-- Docker -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="150">
-                <i class="fab fa-docker text-base mb-0.5 text-blue-300"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Docker</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Containerization.</p>
-            </div>
-            <!-- Microservices -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="175">
-                <i class="fas fa-project-diagram text-base mb-0.5 text-purple-300"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Microservices</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Scalable apps.</p>
-            </div>
-            <!-- Maven -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-cogs text-base mb-0.5 text-yellow-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Maven</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Build automation.</p>
-            </div>
-            <!-- Agile Methodology -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="225">
-                <i class="fas fa-sitemap text-base mb-0.5 text-green-300"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Agile Methodology</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Iterative PM.</p>
-            </div>
-            <!-- Problem Solving -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="250">
-                <i class="fas fa-lightbulb text-base mb-0.5 text-yellow-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Problem Solving</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Coding solutions.</p>
-            </div>
-            <!-- Teamwork -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="275">
-                <i class="fas fa-users text-base mb-0.5 text-green-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Teamwork</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Collaboration.</p>
-            </div>
-            <!-- Time Management -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-clock text-base mb-0.5 text-blue-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Time Management</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Deadlines.</p>
-            </div>
-            <!-- Communication -->
-            <div class="skill-card p-1 min-w-[80px] rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-[#1e3a8a] hover:to-[#7e22ce] hover:shadow-lg hover:shadow-yellow-400/50 transition duration-100 ease-in-out" data-aos="fade-up" data-aos-delay="325">
-                <i class="fas fa-comments text-base mb-0.5 text-purple-400"></i>
-                <h3 class="text-[0.65rem] font-semibold mb-0.25 text-white">Communication</h3>
-                <p class="text-[0.5rem] opacity-90 text-gray-200">Team interaction.</p>
-            </div>
-        </div>
-    </section>
-    <!-- قسم التواصل -->
-    <section id="contact" class="max-w-6xl mx-auto px-6 my-12 text-center">
-        <h2 class="text-3xl font-bold mb-6 text-teal-300" data-aos="fade-up">📞 Contact Me</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <a href="mailto:mohamedcody18@gmail.com" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
-                <i class="fas fa-envelope text-3xl text-yellow-300 mb-1"></i>
-                <p class="text-sm">Email</p>
-                <p class="text-xs opacity-90">mohamedcody18@gmail.com</p>
-            </a>
-            <a href="https://wa.me/01148415128" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
-                <i class="fab fa-whatsapp text-3xl text-green-400 mb-1"></i>
-                <p class="text-sm">WhatsApp</p>
-                <p class="text-xs opacity-90">01148415128</p>
-            </a>
-            <a href="https://www.instagram.com/mohamedsaad8580" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
-                <i class="fab fa-instagram text-3xl text-pink-400 mb-1"></i>
-                <p class="text-sm">Instagram</p>
-                <p class="text-xs opacity-90">@mohamedsaad8580</p>
-            </a>
-            <a href="https://www.facebook.com/mohamed.saad.424337" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
-                <i class="fab fa-facebook text-3xl text-blue-600 mb-1"></i>
-                <p class="text-sm">Facebook</p>
-                <p class="text-xs opacity-90">Mohamed Saad</p>
-            </a>
-            <a href="https://www.linkedin.com/in/mohamed-cody-394b98372/" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
-                <i class="fab fa-linkedin text-3xl text-blue-400 mb-1"></i>
-                <p class="text-sm">LinkedIn</p>
-                <p class="text-xs opacity-90">Mohamed Cody</p>
-            </a>
-            <a href="https://github.com/mohamedcody" target="_blank" class="icon-btn bg-white/20 p-4 rounded-lg shadow-sm hover:bg-white/30">
-                <i class="fab fa-github text-3xl text-gray-400 mb-1"></i>
-                <p class="text-sm">GitHub</p>
-                <p class="text-xs opacity-90">mohamedcody</p>
-            </a>
-        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-6 text-center text-sm opacity-80">
-        <div class="flex items-center justify-center gap-6 mb-3">
-            <a href="mailto:mohamedcody18@gmail.com" class="hover:text-yellow-300"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://wa.me/201148415128" target="_blank" class="hover:text-green-400"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/mohamed-cody-394b98372" target="_blank" class="hover:text-blue-400"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/mohamedcody" target="_blank" class="hover:text-gray-300"><i class="fa-brands fa-github"></i></a>
-            <a href="https://facebook.com/mohamed.saad" target="_blank" class="hover:text-blue-500"><i class="fa-brands fa-facebook"></i></a>
-        </div>
-        © 2025 Mohamed Saad Abdallah — All rights reserved
-    </footer>
-</div>
+    <section id="services" class="container-wide py-20">
+      <div class="mb-10 text-center"><p class="text-sm font-black uppercase tracking-[.28em] text-violet-300">What I deliver</p><h2 class="mt-3 text-4xl font-black">Services built around business outcomes</h2></div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="glass premium-card rounded-3xl p-7"><i class="fa-solid fa-plug-circle-bolt text-3xl text-cyan-300"></i><h3 class="mt-5 text-xl font-black">API development</h3><p class="mt-3 text-slate-300">CRUD, pagination, filtering, validation, and documented endpoints.</p></div>
+        <div class="glass premium-card rounded-3xl p-7"><i class="fa-solid fa-lock text-3xl text-emerald-300"></i><h3 class="mt-5 text-xl font-black">Authentication</h3><p class="mt-3 text-slate-300">Register/login flows, JWT, secure password handling, and role-aware access.</p></div>
+        <div class="glass premium-card rounded-3xl p-7"><i class="fa-solid fa-database text-3xl text-violet-300"></i><h3 class="mt-5 text-xl font-black">Database modeling</h3><p class="mt-3 text-slate-300">Schema planning for users, products, jobs, orders, and workflow records.</p></div>
+      </div>
+    </section>
 
-<!-- AOS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 700, once: true });
-</script>
+    <section id="contact" class="container-wide py-24">
+      <div class="glass rounded-[36px] p-8 md:p-12 text-center" data-aos="zoom-in">
+        <p class="text-sm font-black uppercase tracking-[.28em] text-emerald-200">Available for serious products</p>
+        <h2 class="mt-4 text-4xl md:text-6xl font-black tracking-[-.05em]">Let’s build a back end recruiters and users can trust.</h2>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="mailto:mohamedcody18@gmail.com" class="btn-primary rounded-2xl px-7 py-4 font-black transition"><i class="fa-solid fa-envelope"></i> Email me</a>
+          <a href="https://www.linkedin.com/in/mohamed-cody-394b98372/" target="_blank" class="glass rounded-2xl px-7 py-4 font-bold"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/mohamedcody" target="_blank" class="glass rounded-2xl px-7 py-4 font-bold"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="https://wa.me/201148415128?text=Hi%20Mohamed,%20I%20reviewed%20your%20portfolio%20and%20I'm%20interested%20in%20discussing%20a%20backend%20development%20opportunity%20with%20you."
+     target="_blank"
+     rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/50">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+  <footer class="container-wide pb-10 text-center text-sm text-slate-500">© 2026 Mohamed Saad Abdallah — Back-End Developer & Product Builder</footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 760, once: true, offset: 80 });</script>
 </body>
 </html>
